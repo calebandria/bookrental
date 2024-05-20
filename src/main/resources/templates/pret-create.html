@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<head>
+    <title>Ajouter prets</title>
+</head>
+
+<body class="sb-nav-fixed">
+    <section layout:fragment="content">
+        <h1 class="mt-4">Prets</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a th:href="@{/home}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Prets</li>
+        </ol>
+
+        <form action="post" th:action="@{/prets/{idAdherent}/{idExemplaire}/new(idAdherent=${idAdherent}, idExemplaire=${idExemplaire})} " th:object="${pret}">
+            <h3>Quel adherent ?</h3>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>id_adherent</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>id_adherent</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                            </tr>
+                        </tfoot>
+                        <tbody class="adherent-info">
+                            <tr class="user" th:each="adherent :${adherents}">
+                                <td th:text="${adherent.idAdherent}">id_adherent</td>
+                                <td th:text="${adherent.nom}">Nom</td>
+                                <td th:text="${adherent.prenom}">Prenom</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <h3>Quel(s) livre(s) ?</h3>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <table id="datatablesExemplaire">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Titre</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Titre</th>
+                            </tr>
+                        </tfoot>
+                        <tbody class="exemplaire-info">
+                            <tr th:each="exemplaire :${exemplaires}" class="exemplaire">
+                                <td th:text="${exemplaire.idExemplaire}">Id</td>
+                                <td th:text="${exemplaire.title}">Titre</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+
+    </section>
+</body>
+
+</html>

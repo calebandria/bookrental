@@ -7,5 +7,5 @@ import com.kaleba.bookrental.bookrental.model.Pret;
 
 
 public interface PretRepository extends JpaRepository<Pret, Integer> {
-    Pret  findByIdPret(int idPret);
+
 }

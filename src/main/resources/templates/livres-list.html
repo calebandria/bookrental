@@ -26,6 +26,8 @@
                             <th>Auteur</th>
                             <th>Edition</th>
                             <th>Action</th>
+                            <th>Exemplaires</th>
+                            <th>Disponible</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -34,18 +36,27 @@
                             <th>Auteur</th>
                             <th>Edition</th>
                             <th>Action</th>
+                            <th>Exemplaires</th>
+                            <th>Disponible</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr th:each="livre :${livres}">
+                          <tr th:each="livre :${livres}" class="livre">
                             <td th:text="${livre.titre}">Titre</td>
                             <td th:text="${livre.auteur}">Auteur</td>
                             <td th:text="${livre.edition}">Edition</td>
                             <td>
                                 <a class="btn btn-outline-primary" th:href="@{/livres/{idLivre}/edit(idLivre=${livre.idLivre})}"><i class="fas fa-edit"></i></a>
                                 <a class="btn btn-outline-danger" th:href="@{/livres/{idLivre}/delete(idLivre=${livre.idLivre})}"><i class="fa-solid fa-trash"></i></i></a>
+                                
                             </td>
-                        </tr>
+                            <td>
+                                <a class="btn btn-outline-secondary" th:href="@{/exemplaires/{idLivre}/new(idLivre=${livre.idLivre})}"><i class="fa-solid fa-plus"></i></i></a>
+                                <a class="btn btn-outline-secondary" th:href="@{/exemplaires/{idLivre}/view(idLivre=${livre.idLivre})}"><i class="fa-solid fa-eye"></i></i></a>
+                            </td>
+                            <td th:text="${livre.exemplaires.size()}">Disponible</td>
+                        </tr>  
+                      
                     </tbody>
                 </table>
             </div>

@@ -1,5 +1,9 @@
 package com.kaleba.bookrental.bookrental.dto;
 
+import java.util.List;
+
+import com.kaleba.bookrental.bookrental.model.Exemplaire;
+
 import jakarta.validation.constraints.NotEmpty;
 
 public class LivreDto {
@@ -11,6 +15,8 @@ public class LivreDto {
     private String auteur;
     @NotEmpty(message="Edition ne doit pas être vide")
     private String edition;
+
+    private List<Exemplaire> exemplaires; 
 
     public int getIdLivre() {
         return idLivre;
@@ -42,6 +48,14 @@ public class LivreDto {
 
     public void setEdition(String edition) {
         this.edition = edition;
+    }
+
+    public List<Exemplaire> getExemplaires() {
+        return exemplaires;
+    }
+
+    public void setExemplaires(List<Exemplaire> exemplaires) {
+        this.exemplaires = exemplaires;
     }
 
 }

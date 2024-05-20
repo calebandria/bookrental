@@ -37,6 +37,7 @@ public class LivreServiceImpl implements LivreService {
         livreDto.setTitre(livre.getTitre());
         livreDto.setAuteur(livre.getAuteur());
         livreDto.setEdition(livre.getEdition());
+        livreDto.setExemplaires(livre.getExemplaires());
 
         return livreDto;
     }

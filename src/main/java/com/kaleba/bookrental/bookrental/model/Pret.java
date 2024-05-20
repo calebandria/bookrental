@@ -16,8 +16,15 @@ import jakarta.persistence.Table;
 public class Pret {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "id_pret")
     private int idPret;
+
+    @Column(name = "date_pret")
+    private LocalDate datePret;
+
+    @Column(name = "date_remise")
+    private LocalDate dateRemise;
 
     @ManyToOne
     @JoinColumn(name = "adherent_id")
@@ -26,11 +33,6 @@ public class Pret {
     @ManyToOne
     @JoinColumn(name = "examplaire_id")
     Exemplaire exemplaire;
-
-    @Column(name = "date_pret")
-    private LocalDate datePret;
-    @Column(name = "date_remise")
-    private LocalDate dateRemise;
 
     public int getIdPret() {
         return idPret;

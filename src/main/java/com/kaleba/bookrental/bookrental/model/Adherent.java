@@ -1,9 +1,12 @@
 package com.kaleba.bookrental.bookrental.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,6 +14,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,10 +24,13 @@ public class Adherent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_adherent")
     private int idAdherent;
+
     @Column(name = "nom")
     private String nom;
+
     @Column(name = "prenom")
     private String prenom;
+
     @Column(name = "data_adhesion")
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDate dateAdhesion;
@@ -31,6 +38,11 @@ public class Adherent {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
+
+    @OneToMany(mappedBy="adherent", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Pret> prets = new ArrayList<>();
+
+    
 
     public LocalDate getDateAdhesion() {
         return dateAdhesion;

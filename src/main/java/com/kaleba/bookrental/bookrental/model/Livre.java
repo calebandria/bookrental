@@ -20,22 +20,25 @@ public class Livre {
 
     @Column(name = "id_livre")
     private int idLivre;
+
     @Column(name = "titre")
     private String titre;
+
     @Column(name = "auteur")
     private String auteur;
+    
     @Column(name = "edition")
     private String edition;
 
     @OneToMany(mappedBy="livre", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Exemplaire> examplaires = new ArrayList<>();
+    private List<Exemplaire> exemplaires = new ArrayList<>();
 
-    public List<Exemplaire> getExamplaires() {
-        return examplaires;
+    public List<Exemplaire> getExemplaires() {
+        return exemplaires;
     }
 
-    public void setExamplaires(List<Exemplaire> examplaires) {
-        this.examplaires = examplaires;
+    public void setExemplaires(List<Exemplaire> exemplaires) {
+        this.exemplaires = exemplaires;
     }
 
     public int getIdLivre() {
