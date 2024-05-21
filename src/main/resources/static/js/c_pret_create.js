@@ -25,12 +25,20 @@ class urlInfo {
             return `/prets/${parseInt(idAdherent)}/${parseInt(idExemplaire)}/new`
 
         else 
-            return "Invalid url, please select an adherent or an exemplaire"
+            return "error"
     }
 }
 
 let adherentInfo = document.querySelector(".adherent-info");
 let exemplaireInfo = document.querySelector(".exemplaire-info");
+
+let datePret = document.getElementById("datePret")
+let dateRemise = document.getElementById("dateRemise")
+
+let pretAdding = document.getElementById("pretAdding")
+
+let idAdherentIn = document.getElementById("idAdherent")
+let idExemplaireIn = document.getElementById("idExemplaire")
 
 var idAdherent 
 var idExemplaire
@@ -70,8 +78,10 @@ adherentInfo.addEventListener("click", (event) => {
     idAdherent = idSelectedAdherent(event);
     url.setIdAdherent(idAdherent)
 /*     window.location.href = `/prets/${parseInt(idAdherent)}/` */
+    idAdherentIn.value = parseInt(idAdherent)
     console.log(url.getUrl())
 
+    if(url.getUrl() !="error") pretAdding.action = url.getUrl()
     // transforming the background color into another color
     Array.from(adherentInfo.children).forEach(element => {
         if (element.classList.contains("selected")) {
@@ -92,8 +102,9 @@ exemplaireInfo.addEventListener("click", (event) => {
 
     url.setIdExemplaire(idExemplaire)
 
+    idExemplaireIn.value = parseInt(idExemplaire)
     console.log(url.getUrl())
-
+    if(url.getUrl() !="error") pretAdding.action = url.getUrl()
     // transforming the background color into another color
     Array.from(exemplaireInfo.children).forEach(element => {
         if (element.classList.contains("selected")) {
@@ -107,5 +118,22 @@ exemplaireInfo.addEventListener("click", (event) => {
         element.classList.add("selected")
     })
 })
+
+
+datePret.addEventListener("input", ()=>{
+    const dateOfReturn = datePret.value;
+
+    if (dateOfReturn) {
+        // Set the min attribute of the endDateTimeInput
+        dateRemise.min = dateOfReturn;
+        // Enable the endDateTimeInput
+        dateRemise.disabled = false;
+    } else {
+        // If no valid value is set, keep the endDateTimeInput disabled
+        dateRemise.disabled = true;
+    }
+
+})
+
 
 /* setTimeout(3000, ()=>console.log(url)) */

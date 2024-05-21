@@ -14,8 +14,8 @@
             <li class="breadcrumb-item active">Prets</li>
         </ol>
 
-        <form action="post" th:action="@{/prets/{idAdherent}/{idExemplaire}/new(idAdherent=${idAdherent}, idExemplaire=${idExemplaire})} " th:object="${pret}">
-            <h3>Quel adherent ?</h3>
+        <form method="post" th:action="@{/prets/{idAdherent}/{idExemplaire}/new(idAdherent=${idAdherent}, idExemplaire=${idExemplaire})} " th:object="${pret}" id="pretAdding">
+            <h3>Adherent</h3>
             <div class="card mb-4">
                 <div class="card-body">
                     <table id="datatablesSimple">
@@ -44,8 +44,7 @@
                 </div>
             </div>
 
-
-            <h3>Quel(s) livre(s) ?</h3>
+            <h3>Livre</h3>
             <div class="card mb-4">
                 <div class="card-body">
                     <table id="datatablesExemplaire">
@@ -70,8 +69,31 @@
                     </table>
                 </div>
             </div>
-        </form>
+        
+            <div class="form-group mb-3">
+                <label class="h3" for="datePret">Date de pret</label>
+                <input type="datetime-local" 
+                       class="form-control" 
+                       name="datePret"
+                       th:field="*{datePret}"
+                       id="datePret" 
+                       placeholder="Date d'adhésion">
+                <p th:if="${#fields.hasErrors('datePret')}" class="text-danger" th:errors="*{datePret}"></p>
+            </div>
 
+            <div class="form-group mb-3">
+                <label class="h3" for="dateRemise">Date de remise</label>
+                <input type="datetime-local" 
+                       class="form-control" 
+                       name="dateRemise"
+                       th:field="*{dateRemise}"
+                       id="dateRemise" 
+                       disabled
+                       placeholder="Date d'adhésion">
+                <p th:if="${#fields.hasErrors('dateRemise')}" class="text-danger" th:errors="*{dateRemise}"></p>
+            </div>
+            <button type="submit" class="btn btn-primary ">Attribuer</button>
+        </form>
     </section>
 </body>
 

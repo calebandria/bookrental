@@ -2,12 +2,16 @@ package com.kaleba.bookrental.bookrental.dto;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class PretDto {
 
     private int idPret;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDate datePret;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDate dateRemise;
 
     public int getIdPret() {

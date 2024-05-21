@@ -18,8 +18,10 @@ public class PretServiceImpl implements PretService{
     private ExemplaireRepository exemplaireRepository;
 
 
-    public PretServiceImpl(PretRepository pretRepository){
+    public PretServiceImpl(PretRepository pretRepository,AdherentRepository adherentRepository, ExemplaireRepository exemplaireRepository){
         this.pretRepository = pretRepository;
+        this.adherentRepository = adherentRepository;
+        this.exemplaireRepository = exemplaireRepository;
     }
     
     @Override
