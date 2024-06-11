@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation .BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,8 @@ import com.kaleba.bookrental.bookrental.service.AdherentService;
 import com.kaleba.bookrental.bookrental.service.ExemplaireService;
 
 import com.kaleba.bookrental.bookrental.service.PretService;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class PretController {
@@ -42,7 +45,11 @@ public class PretController {
     }
 
     @PostMapping("/prets/{idAdherent}/{idExemplaire}/new")
-    public String savePret(@ModelAttribute("pret") PretDto pretDto,@PathVariable("idAdherent") int idAdherent, @PathVariable("idExemplaire") int idExemplaire, Model model) {
+    public String savePret(@Valid @ModelAttribute("pret") PretDto pretDto,@PathVariable("idAdherent") int idAdherent, @PathVariable("idExemplaire") int idExemplaire, Model model, BindingResult result) {
+        if(result.hasErrors()){
+            return "pret-create";
+        }
+        
         pretService.savePret(pretDto, idAdherent, idExemplaire);
         return "redirect:/adherents";
     }

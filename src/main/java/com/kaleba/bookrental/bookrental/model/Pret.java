@@ -1,6 +1,6 @@
 package com.kaleba.bookrental.bookrental.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,10 +21,10 @@ public class Pret {
     private int idPret;
 
     @Column(name = "date_pret")
-    private LocalDate datePret;
+    private LocalDateTime datePret;
 
     @Column(name = "date_remise")
-    private LocalDate dateRemise;
+    private LocalDateTime dateRemise;
 
     @ManyToOne
     @JoinColumn(name = "adherent_id")
@@ -58,19 +58,19 @@ public class Pret {
         this.exemplaire = exemplaire;
     }
 
-    public LocalDate getDatePret() {
+    public LocalDateTime getDatePret() {
         return datePret;
     }
 
-    public void setDatePret(LocalDate datePret) {
+    public void setDatePret(LocalDateTime datePret) {
         this.datePret = datePret;
     }
 
-    public LocalDate getDateRemise() {
+    public LocalDateTime getDateRemise() {
         return dateRemise;
     }
 
-    public void setDateRemise(LocalDate dateRemise) {
+    public void setDateRemise(LocalDateTime dateRemise) {
         this.dateRemise = dateRemise;
     }
 

@@ -1,29 +1,32 @@
 package com.kaleba.bookrental.bookrental.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.kaleba.bookrental.bookrental.model.Role;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 public class AdherentDto {
 
     private int idAdherent;
-
+    @NotEmpty(message = "Nom ne doit pas être vide")
     private String nom;
-
+    @NotEmpty(message= "Prénom ne doit pas être vide")
     private String prenom;
-
+    @NotNull(message = "Date d'adhésion ne doit pas être vide")
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDate dateAdhesion;
-
+    private LocalDateTime dateAdhesion;
+    @NotNull(message= "Rôle ne doit pas être vide")
     private Role role;
 
-    public LocalDate getDateAdhesion() {
+    public LocalDateTime getDateAdhesion() {
         return dateAdhesion;
     }
 
-    public void setDateAdhesion(LocalDate date_adhesion) {
+    public void setDateAdhesion(LocalDateTime date_adhesion) {
         this.dateAdhesion = date_adhesion;
     }
 

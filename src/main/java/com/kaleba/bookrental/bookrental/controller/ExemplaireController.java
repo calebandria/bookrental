@@ -9,11 +9,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.springframework.validation.BindingResult;
+
 import com.kaleba.bookrental.bookrental.dto.ExemplaireDto;
 import com.kaleba.bookrental.bookrental.dto.LivreDto;
 import com.kaleba.bookrental.bookrental.model.Exemplaire;
 import com.kaleba.bookrental.bookrental.service.ExemplaireService;
 import com.kaleba.bookrental.bookrental.service.LivreService;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class ExemplaireController {
@@ -40,9 +44,12 @@ public class ExemplaireController {
     }
 
     @PostMapping("/exemplaires/{idLivre}/new")
-    public String createExemplaire(@PathVariable("idLivre") int idLivre, @ModelAttribute("exemplaire") ExemplaireDto exemplaireDto, Model model ){
+    public String createExemplaire(@PathVariable("idLivre") int idLivre,@Valid @ModelAttribute("exemplaire") ExemplaireDto exemplaireDto, Model model, BindingResult result){
+        if (result.hasErrors()){
+            return "exemplaire-create";
+        }
+
         exemplaireService.createExemplaire(idLivre, exemplaireDto);
-        
         return "redirect:/livres";
     }
 

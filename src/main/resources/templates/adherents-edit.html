@@ -7,11 +7,11 @@
 
 <body class="sb-nav-fixed">
     <section layout:fragment="content">
-        <h1 class="mt-4">Ajouter adherent</h1>
+        <h1 class="mt-4">Éditer adherent</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a th:href="@{/home}">Dashboard</a></li>
             <li class="breadcrumb-item"><a th:href="@{/adherents}">Adherents</a></li>
-            <li class="breadcrumb-item active">Ajouter adherent</li>
+            <li class="breadcrumb-item active">Éditer adherent</li>
         </ol>
         <form role="form" method="post" th:action="@{/adherents/{idAdherent}/edit(idAdherent=${adherent.idAdherent})}" th:object="${adherent}">
             <div class="container">
@@ -64,7 +64,7 @@
                     <p th:if="${#fields.hasErrors('role')}" class="text-danger" th:errors="*{role}"></p>
                   </div>
 
-                <button type="submit" class="btn btn-primary ">Créer</button>
+                <button type="submit" class="btn btn-primary ">Éditer</button>
             </div>
         </form>
     </section>

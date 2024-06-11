@@ -78,7 +78,7 @@ adherentInfo.addEventListener("click", (event) => {
     idAdherent = idSelectedAdherent(event);
     url.setIdAdherent(idAdherent)
 /*     window.location.href = `/prets/${parseInt(idAdherent)}/` */
-    idAdherentIn.value = parseInt(idAdherent)
+/*     idAdherentIn.value = parseInt(idAdherent) */
     console.log(url.getUrl())
 
     if(url.getUrl() !="error") pretAdding.action = url.getUrl()
@@ -99,12 +99,15 @@ adherentInfo.addEventListener("click", (event) => {
 exemplaireInfo.addEventListener("click", (event) => {
 
     idExemplaire = idSelectedExemplaire(event);
-
     url.setIdExemplaire(idExemplaire)
 
-    idExemplaireIn.value = parseInt(idExemplaire)
+/*     idExemplaireIn.value = parseInt(idExemplaire) */
     console.log(url.getUrl())
-    if(url.getUrl() !="error") pretAdding.action = url.getUrl()
+    if(url.getUrl() !="error") 
+        pretAdding.action = url.getUrl()
+    else{
+        
+    }
     // transforming the background color into another color
     Array.from(exemplaireInfo.children).forEach(element => {
         if (element.classList.contains("selected")) {

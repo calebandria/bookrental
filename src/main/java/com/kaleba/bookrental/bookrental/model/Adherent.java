@@ -1,6 +1,6 @@
 package com.kaleba.bookrental.bookrental.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +31,9 @@ public class Adherent {
     @Column(name = "prenom")
     private String prenom;
 
-    @Column(name = "data_adhesion")
+    @Column(name = "data_adhesion", columnDefinition = "DATETIME")
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDate dateAdhesion;
+    private LocalDateTime dateAdhesion;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
@@ -44,11 +44,11 @@ public class Adherent {
 
     
 
-    public LocalDate getDateAdhesion() {
+    public LocalDateTime getDateAdhesion() {
         return dateAdhesion;
     }
 
-    public void setDateAdhesion(LocalDate date_adhesion) {
+    public void setDateAdhesion(LocalDateTime date_adhesion) {
         this.dateAdhesion = date_adhesion;
     }
 

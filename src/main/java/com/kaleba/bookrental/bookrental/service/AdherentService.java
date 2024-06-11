@@ -15,8 +15,6 @@ public interface AdherentService {
 
     List<AdherentDto> findAllAdherentDtos();
       
-    
-
     Adherent saveAdherent(AdherentDto adherentDto);
 
     AdherentDto findAdherentById(int idAdherent);

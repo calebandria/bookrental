@@ -58,7 +58,7 @@ public class AdherentController {
     @PostMapping("/adherents/{idAdherent}/edit")
     public String updateLivre(@PathVariable("idAdherent") int idAdherent,
                               @Valid @ModelAttribute("adherent") AdherentDto adherent,
-                              BindingResult result ) {
+                              BindingResult result, Model model) {
         if(result.hasErrors()){
             return "adherents-edit";
         }                     
