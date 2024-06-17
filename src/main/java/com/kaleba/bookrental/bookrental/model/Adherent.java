@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
@@ -15,7 +16,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+
+import com.kaleba.bookrental.bookrental.util.*;
 
 @Entity
 @Table(name = "adherent")
@@ -27,6 +32,14 @@ public class Adherent {
 
     @Column(name = "nom")
     private String nom;
+
+    @PrePersist
+    @PreUpdate
+    public void convertToUpperCase() {
+        if (this.nom != null) {
+            this.nom = this.nom.toUpperCase();
+        }
+    }
 
     @Column(name = "prenom")
     private String prenom;
@@ -73,7 +86,7 @@ public class Adherent {
     }
 
     public void setPrenom(String prenom) {
-        this.prenom = prenom;
+        this.prenom = FirstNameUtil.capitalizeFirstLetters(prenom);
     }
 
     public Role getRole() {

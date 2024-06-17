@@ -14,6 +14,10 @@ public class PretDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateRemise;
 
+    private String adherentName;
+
+    private String exemplaireTitle;
+
     public int getIdPret() {
         return idPret;
     }
@@ -36,6 +40,22 @@ public class PretDto {
 
     public void setDateRemise(LocalDateTime dateRemise) {
         this.dateRemise = dateRemise;
+    }
+
+    public void setAdherentName(String adherentName){
+        this.adherentName = adherentName;
+    }
+
+    public void setExemplaireTitle(String exemplaireTitle){
+        this.exemplaireTitle = exemplaireTitle;
+    }
+
+    public String getAdherentName(){
+        return this.adherentName;
+    }
+
+    public String getExemplaireTitle(){
+        return this.exemplaireTitle;
     }
 
 }

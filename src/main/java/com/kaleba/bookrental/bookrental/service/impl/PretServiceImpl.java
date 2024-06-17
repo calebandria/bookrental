@@ -11,6 +11,9 @@ import com.kaleba.bookrental.bookrental.repository.ExemplaireRepository;
 import com.kaleba.bookrental.bookrental.repository.PretRepository;
 import com.kaleba.bookrental.bookrental.service.PretService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PretServiceImpl implements PretService{
     private PretRepository pretRepository;
@@ -45,4 +48,38 @@ public class PretServiceImpl implements PretService{
 
         return pret;
     }
+
+   /*  private PretDto mapToPretDto(Pret pret) {
+        PretDto pretDto = new PretDto();
+
+        pretDto.set
+
+
+    } */
+
+    @Override
+    public List<Pret> findAllPrets(){
+        List<Pret> prets = pretRepository.findAll();
+        return prets;
+    }
+
+    @Override
+    public List<PretDto>findAllPretsDto(){
+        List<Pret> prets = pretRepository.findAll();
+        return prets.stream().map(pret-> mapToPretDto(pret)).collect(Collectors.toList());
+
+    }
+
+    private PretDto mapToPretDto(Pret pret){
+        PretDto pretDto = new PretDto();
+
+        pretDto.setIdPret(pret.getIdPret());
+        pretDto.setDatePret(pret.getDatePret());
+        pretDto.setDateRemise(pret.getDateRemise());
+        pretDto.setExemplaireTitle(pret.getExemplaire().getLivre().getTitre());
+        pretDto.setAdherentName(pret.getAdherent().getPrenom()+ " " +pret.getAdherent().getNom());
+
+        return pretDto;
+    }
+
 }   

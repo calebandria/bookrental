@@ -7,93 +7,29 @@
 </head>
 
 <body class="sb-nav-fixed">
-    <section layout:fragment="content">
+    <section class="adherent-choice" layout:fragment="content">
         <h1 class="mt-4">Prets</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a th:href="@{/home}">Dashboard</a></li>
-            <li class="breadcrumb-item active">Prets</li>
+            <li class="breadcrumb-item"><a th:href="@{/prets}">Prets</a></li>
+            <li class="breadcrumb-item active">Ajouter un pret</li>
         </ol>
 
-        <form method="post" th:action="@{/prets/{idAdherent}/{idExemplaire}/new(idAdherent=${idAdherent}, idExemplaire=${idExemplaire})} " th:object="${pret}" id="pretAdding">
-            <h3>Adherent</h3>
-            <div class="card mb-4">
-                <div class="card-body">
-                    <table id="datatablesSimple">
-                        <thead>
-                            <tr>
-                                <th>id_adherent</th>
-                                <th>Nom</th>
-                                <th>Prenom</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>id_adherent</th>
-                                <th>Nom</th>
-                                <th>Prenom</th>
-                            </tr>
-                        </tfoot>
-                        <tbody class="adherent-info">
-                            <tr class="user" th:each="adherent :${adherents}">
-                                <td th:text="${adherent.idAdherent}">id_adherent</td>
-                                <td th:text="${adherent.nom}">Nom</td>
-                                <td th:text="${adherent.prenom}">Prenom</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <h3>Livre</h3>
-            <input type="number" id="id_exemplaire" th:field="*"/>
-            <div class="card mb-4">
-                <div class="card-body">
-                    <table id="datatablesExemplaire">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Titre</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Id</th>
-                                <th>Titre</th>
-                            </tr>
-                        </tfoot>
-                        <tbody class="exemplaire-info">
-                            <tr th:each="exemplaire :${exemplaires}" class="exemplaire">
-                                <td th:text="${exemplaire.idExemplaire}">Id</td>
-                                <td th:text="${exemplaire.title}">Titre</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        
+        <form method="post" th:object="${pret}">
             <div class="form-group mb-3">
                 <label class="h3" for="datePret">Date de pret</label>
-                <input type="datetime-local" 
-                       class="form-control" 
-                       name="datePret"
-                       th:field="*{datePret}"
-                       id="datePret" 
-                       placeholder="Date d'adhésion">
+                <input type="datetime-local" class="form-control" name="datePret" th:field="*{datePret}" id="datePret"
+                    placeholder="Date d'adhésion">
                 <p th:if="${#fields.hasErrors('datePret')}" class="text-danger" th:errors="*{datePret}"></p>
             </div>
 
             <div class="form-group mb-3">
                 <label class="h3" for="dateRemise">Date de remise</label>
-                <input type="datetime-local" 
-                       class="form-control" 
-                       name="dateRemise"
-                       th:field="*{dateRemise}"
-                       id="dateRemise" 
-                       disabled
-                       placeholder="Date d'adhésion">
+                <input type="datetime-local" class="form-control" name="dateRemise" th:field="*{dateRemise}"
+                    id="dateRemise" disabled placeholder="Date d'adhésion">
                 <p th:if="${#fields.hasErrors('dateRemise')}" class="text-danger" th:errors="*{dateRemise}"></p>
             </div>
-            <button type="submit" class="btn btn-primary ">Attribuer</button>
+            <button type="submit" class="btn btn-secondary " id="attribute" disabled>Attribuer</button>
         </form>
     </section>
 </body>
