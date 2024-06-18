@@ -13,4 +13,5 @@ public interface ExemplaireService {
     List<ExemplaireDto> findExemplaireDtoDispo();
     void updateExemplaire(Exemplaire exemplaire);
     Exemplaire findExemplaireById(int idExemplaire);
+    void deleteExemplaire(int idExemplaire);
 }

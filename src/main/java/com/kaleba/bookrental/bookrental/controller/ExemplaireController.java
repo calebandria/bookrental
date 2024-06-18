@@ -63,4 +63,10 @@ public class ExemplaireController {
         model.addAttribute("titre", title);
         return "exemplaires-view";
     }
+
+    @GetMapping("/exemplaires/{idExemplaire}/delete")
+    public String deleteExemplaire(@PathVariable("idExemplaire") int idExemplaire){
+        exemplaireService.deleteExemplaire(idExemplaire);
+        return "redirect:/livres";
+    }
 }

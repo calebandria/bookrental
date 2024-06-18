@@ -18,6 +18,10 @@ public class LivreDto {
 
     private List<Exemplaire> exemplaires; 
 
+    public long getExemplaireDispo(){
+        return exemplaires.stream().filter(Exemplaire::getDisponible).count();
+    }
+
     public int getIdLivre() {
         return idLivre;
     }

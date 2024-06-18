@@ -88,4 +88,9 @@ public class ExemplaireServiceImpl implements ExemplaireService {
         Exemplaire exemplaire = exemplaireRepository.findByIdExemplaire(idExemplaire);
         return exemplaire;
     }
+
+    @Override
+    public void deleteExemplaire(int idExemplaire){
+        exemplaireRepository.deleteById(idExemplaire);
+    }
 }

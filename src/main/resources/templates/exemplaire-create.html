@@ -18,7 +18,7 @@
             <input type="hidden" th:field="*{idExemplaire}">
             <div class="container">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" id="flexRadioDefault" th:value=true>
+                    <input class="form-check-input" id="availability" type="radio" th:value=true checked>
                     <label class="form-check-label">
                       Disponible
                     </label>
@@ -27,7 +27,6 @@
                 <button type="submit" class="btn btn-primary ">Ajouter</button>
             </div>
         </form>
-        <script src="/js/custom.js"></script>
     </section>
 </body>
 </html>

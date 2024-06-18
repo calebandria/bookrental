@@ -23,7 +23,8 @@
                             <th>Edition</th>
                             <th>Action</th>
                             <th>Exemplaires</th>
-                            <th>Disponible</th>
+                            <th>Nombre</th>
+                            <th>Dispo</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -33,7 +34,8 @@
                             <th>Edition</th>
                             <th>Action</th>
                             <th>Exemplaires</th>
-                            <th>Disponible</th>
+                            <th>Nombre</th>
+                            <th>Dispo</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -50,7 +52,8 @@
                                 <a class="btn btn-outline-secondary" th:href="@{/exemplaires/{idLivre}/new(idLivre=${livre.idLivre})}"><i class="fa-solid fa-plus"></i></i></a>
                                 <a class="btn btn-outline-secondary" th:href="@{/exemplaires/{idLivre}/view(idLivre=${livre.idLivre})}"><i class="fa-solid fa-eye"></i></i></a>
                             </td>
-                            <td th:text="${livre.exemplaires.size()}">Disponible</td>
+                            <td th:text="${livre.exemplaires.size()}">Nombre</td>
+                            <th th:text="${livre.getExemplaireDispo()}">Dispo</th>
                         </tr>  
                       
                     </tbody>
