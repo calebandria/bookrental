@@ -8,6 +8,8 @@ public class PretDto {
 
     private int idPret;
 
+    private int idExemplaire;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime datePret;
 
@@ -24,6 +26,14 @@ public class PretDto {
 
     public void setIdPret(int idPret) {
         this.idPret = idPret;
+    }
+
+    public int getIdExemplaire() {
+        return idExemplaire;
+    }
+
+    public void setIdExemplaire(int idExemplaire) {
+        this.idExemplaire = idExemplaire;
     }
 
     public LocalDateTime getDatePret() {

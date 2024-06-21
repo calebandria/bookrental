@@ -11,7 +11,7 @@
         <h1 class="mt-4">Livres</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a th:href="@{/home}">Dashboard</a></li>
-            <li class="breadcrumb-item active">Liste</li>
+            <li class="breadcrumb-item active">Liste des livres</li>
         </ol>
         <div class="card mb-4">
             <div class="card-body">
@@ -60,7 +60,8 @@
                 </table>
             </div>
         </div>
-        <a class="btn btn-outline-success" th:href="@{/livres/new}"><i class="fa-solid fa-plus"></i> Ajouter un livre</a>       
+        <a class="btn btn-outline-success" th:href="@{/livres/new}"><i class="fa-solid fa-plus"></i> Ajouter un livre</a>    
+        <a class="btn btn-outline-primary" th:href="@{/prets}"><i class="fa-solid fa-eye"></i> Voir les prets <i class="fa-solid fa-landmark"></i></a>   
     </section>
 </body>
 

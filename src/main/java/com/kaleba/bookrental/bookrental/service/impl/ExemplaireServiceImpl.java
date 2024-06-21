@@ -93,4 +93,16 @@ public class ExemplaireServiceImpl implements ExemplaireService {
     public void deleteExemplaire(int idExemplaire){
         exemplaireRepository.deleteById(idExemplaire);
     }
+
+    @Override
+    public void updateDisp(int idExemplaire){
+        Exemplaire exemplaire = exemplaireRepository.findByIdExemplaire(idExemplaire);
+
+        if(exemplaire.getDisponible() == false){
+            exemplaire.setDisponible(true);
+        }
+        else exemplaire.setDisponible(false);
+
+        exemplaireRepository.save(exemplaire);
+    }
 }

@@ -14,4 +14,5 @@ public interface ExemplaireService {
     void updateExemplaire(Exemplaire exemplaire);
     Exemplaire findExemplaireById(int idExemplaire);
     void deleteExemplaire(int idExemplaire);
+    void updateDisp(int idExemplaire);
 }

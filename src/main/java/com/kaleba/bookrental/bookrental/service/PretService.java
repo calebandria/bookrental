@@ -13,4 +13,6 @@ public interface PretService {
 /*     List<PretDto> findAllPretsDto(); */
     List<Pret> findAllPrets();
     List<PretDto>findAllPretsDto();
+    void delete(int idPret);
+
 }

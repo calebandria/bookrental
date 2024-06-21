@@ -77,6 +77,12 @@ public class PretController {
         return "prets-list";
     }
 
-
+    @GetMapping("/prets/{idPret}/{idExemplaire}/delete")
+    public String deletePret(@PathVariable("idExemplaire") int idExemplaire, @PathVariable("idPret") int idPret){
+        pretService.delete(idPret);
+        exemplaireService.updateDisp(idExemplaire);
+        
+        return "redirect:/prets";
+    }
 
 }

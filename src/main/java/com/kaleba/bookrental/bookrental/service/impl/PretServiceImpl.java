@@ -74,12 +74,18 @@ public class PretServiceImpl implements PretService{
         PretDto pretDto = new PretDto();
 
         pretDto.setIdPret(pret.getIdPret());
+        pretDto.setIdExemplaire(pret.getExemplaire().getIdExemplaire());
         pretDto.setDatePret(pret.getDatePret());
         pretDto.setDateRemise(pret.getDateRemise());
         pretDto.setExemplaireTitle(pret.getExemplaire().getLivre().getTitre());
         pretDto.setAdherentName(pret.getAdherent().getPrenom()+ " " +pret.getAdherent().getNom());
 
         return pretDto;
+    }
+
+    @Override
+    public void delete(int idPret){
+        pretRepository.deleteById(idPret);
     }
 
 }   
