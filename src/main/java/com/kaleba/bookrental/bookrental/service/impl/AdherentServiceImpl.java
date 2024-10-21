@@ -40,7 +40,6 @@ public class AdherentServiceImpl implements AdherentService {
         adherentDto.setIdAdherent(adherent.getIdAdherent());
         adherentDto.setNom(adherent.getNom());
         adherentDto.setPrenom(adherent.getPrenom());
-        adherentDto.setRole(adherent.getRole());
         adherentDto.setDateAdhesion(adherent.getDateAdhesion());
 
 
@@ -59,7 +58,6 @@ public class AdherentServiceImpl implements AdherentService {
         adherent.setIdAdherent(adherentDto.getIdAdherent());
         adherent.setNom(adherentDto.getNom());
         adherent.setPrenom(adherentDto.getPrenom());
-        adherent.setRole(adherentDto.getRole());
         adherent.setDateAdhesion(adherentDto.getDateAdhesion());
 
         return adherent;

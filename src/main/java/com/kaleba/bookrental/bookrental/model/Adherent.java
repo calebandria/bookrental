@@ -4,17 +4,18 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -44,18 +45,22 @@ public class Adherent {
     @Column(name = "prenom")
     private String prenom;
 
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "data_adhesion", columnDefinition = "DATETIME")
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateAdhesion;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private Role role;
-
     @OneToMany(mappedBy="adherent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pret> prets = new ArrayList<>();
 
-    
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id_adherent"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName="id_role"))
+    private List<Role> roles = new ArrayList<>();
 
     public LocalDateTime getDateAdhesion() {
         return dateAdhesion;
@@ -87,14 +92,6 @@ public class Adherent {
 
     public void setPrenom(String prenom) {
         this.prenom = FirstNameUtil.capitalizeFirstLetters(prenom);
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 
 }
