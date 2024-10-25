@@ -3,6 +3,10 @@ package com.kaleba.bookrental.bookrental.dto;
 import jakarta.validation.constraints.NotBlank;
 
 public class RegistrationDto {
+
+
+    private int idAdherent;
+
     @NotBlank(message = "Firstname is required")
     private String prenom;
 
@@ -19,6 +23,13 @@ public class RegistrationDto {
         return prenom;
     }
 
+    public void setIdAdherent(int idAdherent){
+        this.idAdherent = idAdherent;
+    }
+
+    public int getIdAdherent(){
+        return idAdherent;
+    }
     public void setPrenom(String prenom){
         this.prenom = prenom; 
     }
