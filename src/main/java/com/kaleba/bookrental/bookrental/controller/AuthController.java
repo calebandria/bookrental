@@ -16,10 +16,16 @@ import jakarta.validation.Valid;
 import org.springframework.ui.Model;
 
 @Controller
-public class RegistrationController {
+public class AuthController {
     
     @Autowired
     private RegistrationService registrationService;
+
+    @GetMapping("/login")
+    public String showLoginForm(Model model){
+
+        return "login_real";
+    }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
@@ -28,8 +34,8 @@ public class RegistrationController {
         return "register";
     }
 
-    @PostMapping("/register")
-    public String registerUser(@Valid @ModelAttribute("registrationForm") RegistrationDto form, BindingResult result) {
+    @PostMapping("/register/save")
+    public String registerUser(@Valid @ModelAttribute("registrationForm") RegistrationDto form, BindingResult result, Model model) {
         if(result.hasErrors()){
             return "register";
         }
