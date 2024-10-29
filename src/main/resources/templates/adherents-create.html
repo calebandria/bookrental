@@ -56,13 +56,13 @@
                     <p th:if="${#fields.hasErrors('role')}" class="text-danger" th:errors="*{role}"></p>
                 </div> -->
 
-                <div class="form-check" th:each="role: ${T(com.kaleba.bookrental.bookrental.model.Role).values()}">
+                <!-- <div class="form-check" th:each="role: ${T(com.kaleba.bookrental.bookrental.model.Role).values()}">
                     <input class="form-check-input" type="radio" name="role" id="flexRadioDefault"  th:field="*{role}" th:value="${role}">
                     <label class="form-check-label" th:for="${#ids.next('role')}" th:text="${role}">
                       Disabled radio
                     </label>
                     <p th:if="${#fields.hasErrors('role')}" class="text-danger" th:errors="*{role}"></p>
-                  </div>
+                  </div> -->
 
                 <button type="submit" class="btn btn-primary ">Créer</button>
             </div>
