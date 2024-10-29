@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.kaleba.bookrental.bookrental.dto.RegistrationDto;
+import com.kaleba.bookrental.bookrental.model.Adherent;
 import com.kaleba.bookrental.bookrental.service.RegistrationService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.ui.Model;
 
 @Controller
@@ -19,12 +23,13 @@ public class RegistrationController {
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
-        model.addAttribute("registrationForm", new RegistrationDto());
+        Adherent adherent = new Adherent();
+        model.addAttribute("registrationForm", adherent);
         return "register";
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("registrationFrom") RegistrationDto form, BindingResult result) {
+    public String registerUser(@Valid @ModelAttribute("registrationForm") RegistrationDto form, BindingResult result) {
         if(result.hasErrors()){
             return "register";
         }
@@ -36,7 +41,7 @@ public class RegistrationController {
 
         }
 
-        return "redirect:/login";
+        return "redirect:/landing";
 
     }
 }
