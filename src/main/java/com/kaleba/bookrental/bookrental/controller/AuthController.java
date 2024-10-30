@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.kaleba.bookrental.bookrental.dto.LoginDto;
 import com.kaleba.bookrental.bookrental.dto.RegistrationDto;
 import com.kaleba.bookrental.bookrental.model.Adherent;
 import com.kaleba.bookrental.bookrental.service.RegistrationService;
@@ -23,8 +24,9 @@ public class AuthController {
 
     @GetMapping("/login")
     public String showLoginForm(Model model){
-
-        return "login_real";
+        LoginDto loginDto = new LoginDto();
+        model.addAttribute("loginForm", loginDto);
+        return "login";
     }
 
     @GetMapping("/register")
