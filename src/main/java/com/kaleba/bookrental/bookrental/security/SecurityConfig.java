@@ -32,12 +32,19 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
 
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers(HttpMethod.GET).permitAll()
-                .requestMatchers(HttpMethod.POST).permitAll()
+                .requestMatchers("/", "/login", "register", "/css/**", "/js/**", "/images/").permitAll()
                 .anyRequest().authenticated()
             )
 
-            .httpBasic(Customizer.withDefaults());
+            .formLogin((form) -> form
+                .loginPage("/login")
+                .permitAll()   
+            )
+            .logout((logout) -> logout
+                .permitAll()
+            );
+
+            /* .httpBasic(Customizer.withDefaults()); */
 
 
         return http.build();
