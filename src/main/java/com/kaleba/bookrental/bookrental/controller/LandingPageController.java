@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LandingPageController {
-    @GetMapping("/landing")
+    @GetMapping("/")
     public String Home(){
         return "landingpage";
     }
