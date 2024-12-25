@@ -44,7 +44,7 @@ public class Adherent {
     @Column(name = "prenom")
     private String prenom;
 
-    @Column(name = "data_adhesion", columnDefinition = "DATETIME")
+    @Column(name = "data_adhesion", columnDefinition = "TIMESTAMP")
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateAdhesion;
 
