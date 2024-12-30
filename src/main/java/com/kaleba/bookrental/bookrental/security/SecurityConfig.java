@@ -29,12 +29,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/login").permitAll()
+                .requestMatchers("/login", "/register").permitAll()
                 .requestMatchers("/livres/**").hasRole("ADMIN")
                 .requestMatchers("/adherents/**").hasRole("ADMIN")
                 .requestMatchers("/exemplaires/**").hasRole("ADMIN")
                 .requestMatchers("/prets/**").hasRole("ADMIN")
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
             )
              .formLogin((form) -> form
                 .permitAll()
