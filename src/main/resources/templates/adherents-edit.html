@@ -13,7 +13,7 @@
             <li class="breadcrumb-item"><a th:href="@{/adherents}">Adherents</a></li>
             <li class="breadcrumb-item active">Éditer adherent</li>
         </ol>
-        <form role="form" method="post" th:action="@{/adherents/{idAdherent}/edit(idAdherent=${adherent.idAdherent})}" th:object="${adherent}">
+        <form role="form" method="post" th:action="@{/admin/adherents/{idAdherent}/edit(idAdherent=${adherent.idAdherent})}" th:object="${adherent}">
             <div class="container">
                 <div class="form-group">
                     <label for="nom">Nom</label>

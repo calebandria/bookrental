@@ -45,15 +45,15 @@
                             <td th:text="${adherent.dateAdhesion}">Date d'adhesion</td>
                             <td th:text="${adherent.role}">Rôle</td>
                             <td>
-                                <a class="btn btn-outline-primary" th:href="@{/adherents/{idAdherent}/edit(idAdherent=${adherent.idAdherent})}"><i class="fas fa-edit"></i></a>
-                                <a class="btn btn-outline-danger" th:href="@{/adherents/{idAdherent}/delete(idAdherent=${adherent.idAdherent})}"><i class="fa-solid fa-trash"></i></i></a>
+                                <a class="btn btn-outline-primary" th:href="@{/admin/adherents/{idAdherent}/edit(idAdherent=${adherent.idAdherent})}"><i class="fas fa-edit"></i></a>
+                                <a class="btn btn-outline-danger" th:href="@{/admin/adherents/{idAdherent}/delete(idAdherent=${adherent.idAdherent})}"><i class="fa-solid fa-trash"></i></i></a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <a class="btn btn-outline-success" th:href="@{/adherents/new}"><i class="fa-solid fa-plus"></i> Ajouter un adhérent</a>
+        <a class="btn btn-outline-success" th:href="@{/admin/adherents/new}"><i class="fa-solid fa-plus"></i> Ajouter un adhérent</a>
     </section>
 </body>
 

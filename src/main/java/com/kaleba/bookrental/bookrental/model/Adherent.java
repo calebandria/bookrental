@@ -16,6 +16,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -44,7 +45,7 @@ public class Adherent {
     @Column(name = "prenom")
     private String prenom;
 
-    @Column(name = "data_adhesion", columnDefinition = "TIMESTAMP")
+    @Column(name = "date_adhesion", columnDefinition = "TIMESTAMP")
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dateAdhesion;
 
@@ -55,7 +56,8 @@ public class Adherent {
     @OneToMany(mappedBy="adherent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pret> prets = new ArrayList<>();
 
-    
+    @OneToOne(mappedBy = "adherent", cascade = CascadeType.ALL, optional = true)
+    private Users user;
 
     public LocalDateTime getDateAdhesion() {
         return dateAdhesion;
@@ -76,6 +78,7 @@ public class Adherent {
     public String getNom() {
         return nom;
     }
+    
 
     public void setNom(String nom) {
         this.nom = nom;

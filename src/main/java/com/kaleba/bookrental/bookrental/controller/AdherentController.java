@@ -24,21 +24,21 @@ public class AdherentController {
         this.adherentService = adherentService;
     }
 
-    @GetMapping("/adherents")
+    @GetMapping("/admin/adherents")
     public String listAdherents(Model model) {
         List<AdherentDto> adherents = adherentService.findAllAdherentDtos();
         model.addAttribute("adherents", adherents);
         return "adherents-list";
     }
 
-    @GetMapping("/adherents/new")
+    @GetMapping("/admin/adherents/new")
     public String createAdherentForm(Model model) {
         Adherent adherent = new Adherent();
         model.addAttribute("adherent", adherent);
         return "adherents-create";
     }
 
-    @PostMapping("/adherents/new")
+    @PostMapping("/admin/adherents/new")
     public String saveAdherent(@Valid @ModelAttribute("adherent") AdherentDto adherentDto, BindingResult result, Model model) {
         if(result.hasErrors()){
             return "adherents-create";
@@ -48,14 +48,14 @@ public class AdherentController {
         return "redirect:/adherents";
     }
 
-    @GetMapping("/adherents/{idAdherent}/edit")
+    @GetMapping("/admin/adherents/{idAdherent}/edit")
     public String editAdherentForm(@PathVariable("idAdherent") int idAdherent, Model model) {
         AdherentDto adherent = adherentService.findAdherentById(idAdherent);
         model.addAttribute("adherent", adherent);
         return "adherents-edit";
     }
 
-    @PostMapping("/adherents/{idAdherent}/edit")
+    @PostMapping("/admin/adherents/{idAdherent}/edit")
     public String updateLivre(@PathVariable("idAdherent") int idAdherent,
                               @Valid @ModelAttribute("adherent") AdherentDto adherent,
                               BindingResult result, Model model) {
@@ -68,7 +68,7 @@ public class AdherentController {
         return "redirect:/adherents";
     }
 
-    @GetMapping("/adherents/{idAdherent}/delete")
+    @GetMapping("/admin/adherents/{idAdherent}/delete")
     public String deleteLivre(@PathVariable("idAdherent") int idAdherent){
         adherentService.delete(idAdherent);
         return "redirect:/adherents";
