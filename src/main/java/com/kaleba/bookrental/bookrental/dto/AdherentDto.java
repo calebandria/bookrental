@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.kaleba.bookrental.bookrental.model.Role;
+import com.kaleba.bookrental.bookrental.model.Users;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -21,6 +22,8 @@ public class AdherentDto {
     private LocalDateTime dateAdhesion;
     @NotNull(message= "Rôle ne doit pas être vide")
     private Role role;
+
+    private Users user;
 
     public LocalDateTime getDateAdhesion() {
         return dateAdhesion;
@@ -61,5 +64,14 @@ public class AdherentDto {
     public void setRole(Role role) {
         this.role = role;
     }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
 
 }

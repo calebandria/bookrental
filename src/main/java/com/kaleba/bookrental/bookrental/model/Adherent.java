@@ -20,6 +20,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
 
 import com.kaleba.bookrental.bookrental.util.*;
 
@@ -56,7 +57,8 @@ public class Adherent {
     @OneToMany(mappedBy="adherent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pret> prets = new ArrayList<>();
 
-    @OneToOne(mappedBy = "adherent", cascade = CascadeType.ALL, optional = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id_user")
     private Users user;
 
     public LocalDateTime getDateAdhesion() {

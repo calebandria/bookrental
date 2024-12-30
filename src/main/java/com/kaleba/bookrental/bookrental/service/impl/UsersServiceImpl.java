@@ -1,5 +1,7 @@
 package com.kaleba.bookrental.bookrental.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kaleba.bookrental.bookrental.dto.UsersDto;
@@ -12,6 +14,9 @@ import java.util.stream.Collectors;
 @Service
 public class UsersServiceImpl implements UsersService {
     private UsersRepository usersRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public UsersServiceImpl(UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
@@ -50,7 +55,7 @@ public class UsersServiceImpl implements UsersService {
 
         user.setIdUser(usersDto.getIdUser());
         user.setUsername(usersDto.getUsername());
-        user.setPassword(usersDto.getPassword());
+        user.setPassword(passwordEncoder.encode(usersDto.getPassword()));
 
         return user;
     }
@@ -70,6 +75,7 @@ public class UsersServiceImpl implements UsersService {
     @Override  
     public void deleteUser(int idUser) {
         usersRepository.deleteById(idUser);
+
     }
 
 }

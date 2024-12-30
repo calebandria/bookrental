@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -23,8 +22,8 @@ public class Users {
     @Column(name="password")
     private String password;
 
-    @OneToOne
-    @JoinColumn(name="adherent_id")
+    @OneToOne(mappedBy = "user")
+    //@JoinColumn(name="adherent_id", referencedColumnName="id_adherent", nullable=false)
     private Adherent adherent;
 
     public int getIdUser() {
@@ -60,7 +59,6 @@ public class Users {
     }
 
 
-    
 
 
     

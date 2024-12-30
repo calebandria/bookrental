@@ -45,7 +45,7 @@ public class AdherentController {
         }
 
         adherentService.saveAdherent(adherentDto);
-        return "redirect:/adherents";
+        return "redirect:/admin/adherents";
     }
 
     @GetMapping("/admin/adherents/{idAdherent}/edit")
@@ -65,13 +65,13 @@ public class AdherentController {
         adherent.setIdAdherent(idAdherent);
         adherentService.updateAdherent(adherent);
 
-        return "redirect:/adherents";
+        return "redirect:/admin/adherents";
     }
 
     @GetMapping("/admin/adherents/{idAdherent}/delete")
     public String deleteLivre(@PathVariable("idAdherent") int idAdherent){
         adherentService.delete(idAdherent);
-        return "redirect:/adherents";
+        return "redirect:/admin/adherents";
     }
 
 

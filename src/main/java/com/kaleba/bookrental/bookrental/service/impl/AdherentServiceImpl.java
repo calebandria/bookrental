@@ -5,9 +5,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import java.time.LocalDateTime;
+
+import com.kaleba.bookrental.bookrental.model.Role;
+
 import com.kaleba.bookrental.bookrental.dto.AdherentDto;
+import com.kaleba.bookrental.bookrental.dto.UsersDto;
 import com.kaleba.bookrental.bookrental.model.Adherent;
+import com.kaleba.bookrental.bookrental.model.Users;
 import com.kaleba.bookrental.bookrental.repository.AdherentRepository;
+import com.kaleba.bookrental.bookrental.service.UsersService;
 import com.kaleba.bookrental.bookrental.service.AdherentService;
 
 
@@ -15,9 +22,11 @@ import com.kaleba.bookrental.bookrental.service.AdherentService;
 @Service
 public class AdherentServiceImpl implements AdherentService {
     private AdherentRepository adherentRepository;
+    private UsersService userService;
 
-    public AdherentServiceImpl(AdherentRepository adherentRepository){
+    public AdherentServiceImpl(AdherentRepository adherentRepository, UsersService userService){
         this.adherentRepository = adherentRepository;
+        this.userService = userService;
 
     }
     @Override
@@ -42,7 +51,7 @@ public class AdherentServiceImpl implements AdherentService {
         adherentDto.setPrenom(adherent.getPrenom());
         adherentDto.setRole(adherent.getRole());
         adherentDto.setDateAdhesion(adherent.getDateAdhesion());
-
+        adherentDto.setUser(adherent.getUser());
 
         return adherentDto;
     }
@@ -53,6 +62,18 @@ public class AdherentServiceImpl implements AdherentService {
         return adherentRepository.save(adherent);
     }
 
+    @Override
+    public Adherent saveAdherentWithCredential(AdherentDto adherentDto, UsersDto userDto){
+        Users user = userService.saveUsers(userDto);
+        adherentDto.setUser(user);
+        adherentDto.setDateAdhesion(LocalDateTime.now());
+        adherentDto.setRole(Role.USER);
+
+        Adherent adherent = maptoAdherent(adherentDto);
+
+        return adherentRepository.save(adherent);
+
+    }
     private Adherent maptoAdherent(AdherentDto adherentDto){
         Adherent adherent = new Adherent();
 
@@ -61,6 +82,7 @@ public class AdherentServiceImpl implements AdherentService {
         adherent.setPrenom(adherentDto.getPrenom());
         adherent.setRole(adherentDto.getRole());
         adherent.setDateAdhesion(adherentDto.getDateAdhesion());
+        adherent.setUser(adherentDto.getUser());
 
         return adherent;
 

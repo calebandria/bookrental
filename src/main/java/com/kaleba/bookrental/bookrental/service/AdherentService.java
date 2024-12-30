@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.kaleba.bookrental.bookrental.dto.AdherentDto;
+import com.kaleba.bookrental.bookrental.dto.UsersDto;
 import com.kaleba.bookrental.bookrental.model.Adherent;
 
 
@@ -16,6 +17,8 @@ public interface AdherentService {
     List<AdherentDto> findAllAdherentDtos();
       
     Adherent saveAdherent(AdherentDto adherentDto);
+
+    Adherent saveAdherentWithCredential(AdherentDto adherentDto, UsersDto userDto);
 
     AdherentDto findAdherentById(int idAdherent);
 
